@@ -1,0 +1,263 @@
+﻿@page
+@inject ITagAppServices TagAppServices
+@inject ICategoryAppServices CategoryAppServices
+@inject INewsAppServices NewsAppServices
+@using Framework
+@using MaktabNews.Domain.Core.Contracts.AppServifces
+@model MaktabNews.RazorPages.Pages.News.DetailsModel
+@{
+    var counter = 0;
+}
+
+
+<section class="section pt-55 ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 mb-20">
+                <!--Post-single-->
+                <div class="post-single">
+                    <div class="post-single-image">
+                        <img src="@Model.News.NewsImageAddress" alt="">
+                    </div>
+                    <div class="post-single-content">
+                        <a href="blog-grid.html" class="categorie">@Model.News.CategoryName</a>
+                        <h4>@Model.News.Title</h4>
+                        <div class="post-single-info">
+                            <ul class="list-inline">
+                                <li><a href="author.html"><img src="@Model.News.ReporterImageAddress" alt=""></a></li>
+                                <li><a href="author.html">@Model.News.ReporterName</a> </li>
+                                <li class="dot"></li>
+                                <li>@Model.News.CreateAt.ToPersianString("dddd, dd MMMM,yyyy")</li>
+                                <li class="dot"></li>
+                                <li>@Model.News.Comments.Count دیدگاه</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="post-single-body">
+                        <p>@Model.News.ShortDescription</p>
+                        <p>@Model.News.Description</p>
+                        <p></p>
+                    </div>
+
+                    <div class="post-single-footer">
+                        <div class="tags">
+                            <ul class="list-inline">
+                                @foreach (var tag in Model.News.Tags)
+                                {
+                                    <li>
+                                        <a href="blog-grid.html">@tag.Title</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="social-media">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="#" class="color-facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-youtube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-pinterest">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!--/-->
+                <!--widget-comments-->
+                <div class="widget mb-50">
+                    <div class="title">
+                        <h5>@Model.News.Comments.Count دیدگاه</h5>
+                    </div>
+                    <ul class="widget-comments">
+                        @foreach (var comment in Model.News.Comments)
+                        {
+                            <li class="comment-item">
+                                <img src="@comment.VisitorImageAddress" alt="">
+                                <div class="content">
+                                    <ul class="info list-inline">
+                                        <li>@comment.VisitorName</li>
+                                        <li class="dot"></li>
+                                        <li>@comment.CreateAt.ToPersianString("dddd, dd MMMM,yyyy")</li>
+                                    </ul>
+                                    <p>@comment.Description</p>
+                                    <div><a href="#" class="link"> <i class="arrow_back"></i> پاسخ</a></div>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                    <!--Leave-comments-->
+                    <div class="title">
+                        <h5>نوشتن یک دیدگاه</h5>
+                    </div>
+                    <form class="widget-form" action="#" method="POST" id="main_contact_form">
+                        <p>آدرس ایمیل شما منتشر نخواهد شد، فیلدهای الزامی علامت گذاری شده است*.</p>
+                        <div class="alert alert-success contact_msg" style="display: none" role="alert">
+                            پیام شما با موفقیت ارسال شد.
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="دیدگاه شما*" required="required"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="نام کامل*" required="required">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="آدرس ایمیل *" required="required">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-20">
+                                <div class="form-group">
+                                    <input type="text" name="website" id="website" class="form-control" placeholder="وب سایت">
+                                </div>
+                                <label>
+                                    <input name="name" type="checkbox" value="1" required="required">
+                                    <span>برای دفعه بعد که نظر می دهم نام، ایمیل و وب سایت من را در این مرورگر ذخیره کنید.</span>
+                                </label>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" name="submit" class="btn-custom">
+                                    ثبت دیدگاه
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 max-width">
+                <!--widget-author-->
+                <div class="widget">
+                    <div class="widget-author">
+                        <a href="author.html" class="image">
+                            <img src="@Model.Reporter.ImageAddress" alt="">
+                        </a>
+                        <h6>
+                            <span>@Model.Reporter.FullName</span>
+                        </h6>
+                        <p>@Model.Reporter.AboutMe</p>
+                        <div class="social-media">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="#" class="color-facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-youtube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="color-pinterest">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--/-->
+                <!--widget-latest-posts-->
+                <div class="widget ">
+                    <div class="section-title">
+                        <h5>نوشته های اخیر</h5>
+                    </div>
+                    <ul class="widget-latest-posts">
+                        @foreach (var news in @NewsAppServices.GetRecent(5))
+                        {
+                            {
+                                counter++;
+                            }
+                            <li class="last-post">
+                                <div class="image">
+                                    <a href="post-default.html">
+                                        <img src="@news.ImageAddress" alt="...">
+                                    </a>
+                                </div>
+                                <div class="nb">@counter</div>
+                                <div class="content">
+                                    <p>
+                                        <a href="post-default.html">@news.Title</a>
+                                    </p>
+                                    <small>
+                                        <span class="icon_clock_alt"></span> @news.CreateAt.ToPersianString("dddd, dd MMMM,yyyy")
+                                    </small>
+                                </div>
+                            </li>
+                        }
+                   
+                    </ul>
+                </div>
+                <!--/-->
+                <!--widget-categories-->
+                <div class="widget">
+                    <div class="section-title">
+                        <h5>دسته بندیها</h5>
+                    </div>
+                    <ul class="widget-categories">
+                        @foreach (var category in @CategoryAppServices.GetCategoriesWithCount())
+                        {
+                            <li>
+                                <a href="#" class="categorie">@category.Title</a>
+                                <span class="ml-auto">@category.NewsCount نوشته</span>
+                            </li>
+                        }
+                   
+                    </ul>
+                </div>
+                <!--/-->
+                <!--widget-tags-->
+                <div class="widget">
+                    <div class="section-title">
+                        <h5>برچسب ها</h5>
+                    </div>
+                    <div class="widget-tags">
+                        <ul class="list-inline">
+                            @foreach (var tag in @TagAppServices.GetAll())
+                            {
+                                <li>
+                                    <a href="#">@tag.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <!--/-->
+            </div>
+        </div>
+    </div>
+</section><!--/-->

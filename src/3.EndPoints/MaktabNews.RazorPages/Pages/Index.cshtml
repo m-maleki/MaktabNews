@@ -1,0 +1,42 @@
+﻿@page
+@using Framework
+@model IndexModel
+@{
+    // ViewData["Title"] = "Home page";
+}
+
+
+@foreach(var item in Model.News)
+{
+    <div class="col-lg-4 col-md-6">
+        <div class="post-card">
+            <div class="post-card-image">
+                <a asp-page="News/Details" asp-route-id="@item.Id">
+                    <img src="@item.NewsImageAddress" alt="">
+                </a>
+            </div>
+            <div class="post-card-content">
+                <a href="blog-grid.html" class="categorie">@item.CategoryName</a>
+                <h5>
+                    <a asp-page="News/Details" asp-route-id="@item.Id" >@item.Title</a>
+                </h5>
+                <p>@item.ShortDescription</p>
+                <div class="post-card-info">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                                <img src="@item.ReporterImageAddress" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="author.html">@item.ReporterName</a>
+                        </li>
+                        <li class="dot"></li>
+                        <li>@item.CreateAt.ToPersianString("dddd, dd MMMM,yyyy")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
