@@ -7,5 +7,6 @@
         public string VisitorName { get; set; }
         public string VisitorImageAddress { get; set; }
         public DateTime CreateAt { get; set; }
+        public string CreateAtFa { get; set; }
     }
 }

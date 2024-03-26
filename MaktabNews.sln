@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Framework", "0.Framework"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "src\0.Framework\Framework\Framework.csproj", "{38780DBC-D929-4C45-92AB-B066EA4CBEB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaktabNews.WebApi", "src\3.EndPoints\MaktabNews.WebApi\MaktabNews.WebApi\MaktabNews.WebApi.csproj", "{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{38780DBC-D929-4C45-92AB-B066EA4CBEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38780DBC-D929-4C45-92AB-B066EA4CBEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38780DBC-D929-4C45-92AB-B066EA4CBEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{583F444B-0256-4878-B2A2-8A5CDDE7CEC8} = {07DB87CB-9DE5-4B1E-B238-137C9FD396E6}
 		{A30CF030-593C-4CE8-AE7B-99E32790B246} = {DF15DD93-1E46-443C-BBA4-8E0D98F07F60}
 		{38780DBC-D929-4C45-92AB-B066EA4CBEB6} = {A30CF030-593C-4CE8-AE7B-99E32790B246}
+		{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5} = {1215F11A-3560-4312-9656-E057D5C9B5C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF4D5D51-9971-4BC8-B81C-A0BA46F4CC68}

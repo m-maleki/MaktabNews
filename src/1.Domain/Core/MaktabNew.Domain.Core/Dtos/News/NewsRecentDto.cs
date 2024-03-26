@@ -11,6 +11,8 @@ namespace MaktabNews.Domain.Core.Dtos.News
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime CreateAt { get; set; }
+        public string CreateAtFa { get; set; }
+
         public string ImageAddress { get; set; }
     }
 }

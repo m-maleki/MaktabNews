@@ -1,4 +1,5 @@
-﻿using MaktabNews.Domain.Core.Contracts.Repository;
+﻿using Framework;
+using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Dtos.Comment;
 using MaktabNews.Domain.Core.Dtos.News;
 using MaktabNews.Infrastructure.EfCore.Common;
@@ -27,6 +28,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                     CategoryName = x.Category.Title,
                     ReporterName = x.Reporter.FullName,
                     CreateAt = x.CreateAt,
+                    CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                     NewsImageAddress = x.ImageAddress,
                     ReporterImageAddress = x.Reporter.ImageAddress
                 }).ToList();
@@ -45,6 +47,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                     CategoryName = x.Category.Title,
                     ReporterName = x.Reporter.FullName,
                     CreateAt = x.CreateAt,
+                    CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                     NewsImageAddress = x.ImageAddress,
                     ReporterImageAddress = x.Reporter.ImageAddress,
                     Tags = x.Tags,
@@ -56,7 +59,8 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                         CreateAt = x.CreateAt,
                         Description = x.Description,
                         VisitorName = x.User.FullName,
-                        VisitorImageAddress = x.User.ImageAddress
+                        VisitorImageAddress = x.User.ImageAddress,
+                        CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                     }).ToList()
                 }).FirstOrDefault(x => x.Id == id);
 
@@ -79,7 +83,8 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                     Id = x.Id,
                     Title = x.Title,
                     ImageAddress = x.ImageAddress,
-                    CreateAt = x.CreateAt
+                    CreateAt = x.CreateAt,
+                    CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                 })
                 .OrderByDescending(x=>x.CreateAt)
                 .Take(count)

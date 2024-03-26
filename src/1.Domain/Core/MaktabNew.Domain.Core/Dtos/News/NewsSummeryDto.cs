@@ -8,6 +8,7 @@
         public string CategoryName { get; set; }
         public string ReporterName { get; set; }
         public DateTime CreateAt { get; set; }
+        public string CreateAtFa { get; set; }
         public string NewsImageAddress { get; set; }
         public string ReporterImageAddress { get; set; }
     }

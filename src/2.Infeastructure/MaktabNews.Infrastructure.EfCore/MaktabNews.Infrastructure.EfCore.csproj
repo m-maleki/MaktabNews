@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\0.Framework\Framework\Framework.csproj" />
     <ProjectReference Include="..\..\1.Domain\Core\MaktabNew.Domain.Core\MaktabNews.Domain.Core.csproj" />
   </ItemGroup>
 
