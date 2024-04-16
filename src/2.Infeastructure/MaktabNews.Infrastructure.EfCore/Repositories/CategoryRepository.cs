@@ -6,26 +6,38 @@ using System.Text;
 using System.Threading.Tasks;
 using MaktabNews.Domain.Core.Dtos.Category;
 using MaktabNews.Infrastructure.EfCore.Common;
+using MaktabNews.Redis;
 
 namespace MaktabNews.Infrastructure.EfCore.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
         private readonly AppDbContext _appDbContext;
+        private readonly IRedisCacheServices _redisCacheServices;
+       
 
-        public CategoryRepository(AppDbContext appDbContext)
+        public CategoryRepository(AppDbContext appDbContext,
+            IRedisCacheServices redisCacheServices)
         {
             _appDbContext = appDbContext;
+            _redisCacheServices = redisCacheServices;
         }
 
         public List<CategoryMenuDto> GetCategoriesForMenu()
         {
-            var result = _appDbContext.Categories
-                .Select(c => new CategoryMenuDto
-                {
-                    Id = c.Id,
-                    Title = c.Title,
-                }).ToList();
+            var result = _redisCacheServices.Get<List<CategoryMenuDto>>("CategoriesForMenu");
+
+            if (result == null)
+            {
+                result = _appDbContext.Categories
+                    .Select(c => new CategoryMenuDto
+                    {
+                        Id = c.Id,
+                        Title = c.Title,
+                    }).ToList();
+
+                _redisCacheServices.SetSliding("CategoriesForMenu",result,120);
+            }
 
             return result;
         }

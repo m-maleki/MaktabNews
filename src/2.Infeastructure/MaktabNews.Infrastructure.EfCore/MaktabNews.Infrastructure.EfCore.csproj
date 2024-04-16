@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\0.Framework\Framework\Framework.csproj" />
     <ProjectReference Include="..\..\1.Domain\Core\MaktabNew.Domain.Core\MaktabNews.Domain.Core.csproj" />
+    <ProjectReference Include="..\MaktabNews.Infrastructure.Redis\MaktabNews.Infrastructure.Redis\MaktabNews.Redis\MaktabNews.Redis.csproj" />
   </ItemGroup>
 
 </Project>

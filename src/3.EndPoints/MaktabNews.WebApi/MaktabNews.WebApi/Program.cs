@@ -7,6 +7,7 @@ using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.AppServifces;
 using MaktabNews.Infrastructure.EfCore.Repositories;
 using MaktabNews.Domain.Core.Contracts.AppServices;
+using MaktabNews.Infrastructure.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ builder.Services.AddScoped<IReporterRepository, ReporterRepository>();
 builder.Services.AddScoped<IReporterServices, ReporterServices>();
 builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 
+builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
+
 #endregion
 
 builder.Services.AddControllers();
@@ -38,7 +41,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options
     => options.UseSqlServer(
-        "Data Source=masoud;Initial Catalog=MaktabNews;User ID=sa;Password=******;TrustServerCertificate=True;Encrypt=True"));
+        "Data Source=masoud;Initial Catalog=MaktabNews;User ID=sa;Password=25915491;TrustServerCertificate=True;Encrypt=True"));
 
 var app = builder.Build();
 

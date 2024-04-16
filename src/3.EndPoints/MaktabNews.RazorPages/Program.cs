@@ -6,7 +6,9 @@ using MaktabNews.Domain.Core.Contracts.Services;
 using MaktabNews.Domain.Services;
 using MaktabNews.Infrastructure.EfCore.Common;
 using MaktabNews.Infrastructure.EfCore.Repositories;
+using MaktabNews.Redis;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,12 +31,30 @@ builder.Services.AddScoped<IReporterRepository, ReporterRepository>();
 builder.Services.AddScoped<IReporterServices, ReporterServices>();
 builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 
+builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
+
 // Add services to the container.
+
+
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "localhost:6379";
+    options.ConfigurationOptions = new ConfigurationOptions
+    {
+        Password = string.Empty,
+        DefaultDatabase = 10,
+        ConnectTimeout = 5000,
+    };
+    options.ConfigurationOptions.EndPoints.Add("localhost:6379");
+});
+
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<AppDbContext>(options
     => options.UseSqlServer(
-        "Data Source=masoud;Initial Catalog=MaktabNews;User ID=sa;Password=******;TrustServerCertificate=True;Encrypt=True"));
+        "Data Source=masoud;Initial Catalog=MaktabNews;User ID=sa;Password=25915491;TrustServerCertificate=True;Encrypt=True"));
 
 var app = builder.Build();
 
