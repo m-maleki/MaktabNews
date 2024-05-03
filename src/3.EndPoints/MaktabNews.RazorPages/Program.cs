@@ -7,6 +7,7 @@ using MaktabNews.Domain.Core.Entities.Configs;
 using MaktabNews.Domain.Services;
 using MaktabNews.Infrastructure.EfCore.Common;
 using MaktabNews.Infrastructure.EfCore.Repositories;
+using MaktabNews.RazorPages.Infrastructure;
 using MaktabNews.Redis;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -81,6 +82,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.CustomExceptionHandlingMiddleware();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
