@@ -71,7 +71,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link  dropdown-toggle" href="post-default.html" data-toggle="dropdown"> دسته بندی ها</a>
                         <ul class="dropdown-menu fade-up">
-                            @foreach (var category in @CategoryAppServices.GetCategoriesForMenu())
+                            @foreach (var category in await @CategoryAppServices.GetCategoriesForMenu(default))
                             {
                                 <li>
                                     <a class="dropdown-item" asp-page="Category" asp-route-id="@category.Id" >@category.Title</a>

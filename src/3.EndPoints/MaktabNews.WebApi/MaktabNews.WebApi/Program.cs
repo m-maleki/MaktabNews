@@ -7,7 +7,7 @@ using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.AppServifces;
 using MaktabNews.Infrastructure.EfCore.Repositories;
 using MaktabNews.Domain.Core.Contracts.AppServices;
-using MaktabNews.Infrastructure.Redis;
+using MaktabNews.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,12 +1,8 @@
-﻿using MaktabNews.Domain.Core.Contracts.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaktabNews.Redis;
 using MaktabNews.Domain.Core.Dtos.Category;
 using MaktabNews.Infrastructure.EfCore.Common;
-using MaktabNews.Redis;
+using MaktabNews.Domain.Core.Contracts.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Infrastructure.EfCore.Repositories
 {
@@ -23,18 +19,18 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             _redisCacheServices = redisCacheServices;
         }
 
-        public List<CategoryMenuDto> GetCategoriesForMenu()
+        public async Task<List<CategoryMenuDto>> GetCategoriesForMenu(CancellationToken cancellationToken)
         {
             var result = _redisCacheServices.Get<List<CategoryMenuDto>>("CategoriesForMenu");
 
             if (result == null)
             {
-                result = _appDbContext.Categories
+                result = await _appDbContext.Categories
                     .Select(c => new CategoryMenuDto
                     {
                         Id = c.Id,
                         Title = c.Title,
-                    }).ToList();
+                    }).ToListAsync(cancellationToken);
 
                 _redisCacheServices.SetSliding("CategoriesForMenu",result,120);
             }
@@ -42,15 +38,15 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             return result;
         }
 
-        public List<CategoryWithCountDto> GetCategoriesWithCount()
+        public async Task<List<CategoryWithCountDto>> GetCategoriesWithCount(CancellationToken cancellationToken)
         {
-            var result = _appDbContext.Categories
+            var result = await _appDbContext.Categories
                 .Select(x => new CategoryWithCountDto
                 {
                     Id = x.Id,
                     Title = x.Title,
                     NewsCount = x.NewsList.Count
-                }).ToList();
+                }).ToListAsync(cancellationToken);
 
             return result;
         }

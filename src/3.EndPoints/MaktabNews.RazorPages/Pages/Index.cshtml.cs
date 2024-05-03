@@ -17,9 +17,9 @@ namespace MaktabNews.Pages
             _newsAppServices = newsAppServices;
         }
 
-        public void OnGet()
+        public async Task OnGet(CancellationToken cancellationToken)
         {
-            News = _newsAppServices.GetAll();
+            News = await _newsAppServices.GetAll(cancellationToken);
         }
     }
 }

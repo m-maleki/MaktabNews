@@ -1,6 +1,7 @@
 ﻿using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Dtos.Tag;
 using MaktabNews.Infrastructure.EfCore.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Infrastructure.EfCore.Repositories
 {
@@ -13,14 +14,14 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             _appDbContext = appDbContext;
         }
 
-        public List<TagViewDto> GetAll()
+        public async Task<List<TagViewDto>> GetAll(CancellationToken cancellationToken)
         {
-            var result = _appDbContext.Tages
+            var result = await _appDbContext.Tages
                 .Select(x => new TagViewDto
                 {
                     Id = x.Id,
                     Title = x.Title,
-                }).ToList();
+                }).ToListAsync(cancellationToken);
 
             return result;
         }

@@ -13,9 +13,9 @@ namespace MaktabNews.Domain.AppServices
             _tagServices = tagServices;
         }
 
-        public List<TagViewDto> GetAll()
+        public async Task<List<TagViewDto>> GetAll(CancellationToken cancellationToken)
         {
-            return _tagServices.GetAll();
+            return await _tagServices.GetAll(cancellationToken);
         }
     }
 }

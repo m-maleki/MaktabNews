@@ -16,10 +16,10 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             _appDbContext = appDbContext;
         }
 
-        public List<NewsSummeryDto> GetAll()
+        public async Task<List<NewsSummeryDto>> GetAll(CancellationToken cancellationToken)
         {
 
-            var result = _appDbContext.News
+            var result = await _appDbContext.News
                 .Select(x => new NewsSummeryDto
                 {
                     Id = x.Id,
@@ -31,14 +31,14 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                     CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                     NewsImageAddress = x.ImageAddress,
                     ReporterImageAddress = x.Reporter.ImageAddress
-                }).ToList();
+                }).ToListAsync(cancellationToken);
 
             return result;
         }
 
-        public NewsDetailsDto GetDetails(int id)
+        public async Task<NewsDetailsDto> GetDetails(int id, CancellationToken cancellationToken)
         {
-            var result = _appDbContext.News
+            var result = await _appDbContext.News
                 .Select(x => new NewsDetailsDto
                 {
                     Id = x.Id,
@@ -62,7 +62,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                         VisitorImageAddress = x.User.ImageAddress,
                         CreateAtFa = x.CreateAt.ToPersianString("dddd, dd MMMM,yyyy"),
                     }).ToList()
-                }).FirstOrDefault(x => x.Id == id);
+                }).FirstOrDefaultAsync(x => x.Id == id,cancellationToken);
 
 
             if (result is { })
@@ -75,9 +75,9 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             }
         }
 
-        public List<NewsRecentDto> GetRecent(int count)
+        public async Task<List<NewsRecentDto>> GetRecent(int count, CancellationToken cancellationToken)
         {
-            var result = _appDbContext.News
+            var result = await _appDbContext.News
                 .Select(x => new NewsRecentDto
                 {
                     Id = x.Id,
@@ -88,7 +88,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                 })
                 .OrderByDescending(x=>x.CreateAt)
                 .Take(count)
-                .ToList();
+                .ToListAsync(cancellationToken);
 
             return result;
         }

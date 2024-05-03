@@ -25,10 +25,10 @@ namespace MaktabNews.RazorPages.Pages.News
         [BindProperty]
         public ReporterSummeryDto Reporter { get; set; }
 
-        public void OnGet(int id)
+        public async Task OnGet(int id,CancellationToken cancellationToken)
         {
-            News = _newsAppServices.GetDetails(id);
-            Reporter = _reporterAppServices.GetSummery(News.ReporterId);
+            News = await _newsAppServices.GetDetails(id, cancellationToken);
+            Reporter = await _reporterAppServices.GetSummery(News.ReporterId, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using MaktabNews.Domain.Core.Contracts.AppServices;
 using MaktabNews.Domain.Core.Contracts.AppServifces;
 using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.Services;
+using MaktabNews.Domain.Core.Entities.Configs;
 using MaktabNews.Domain.Services;
 using MaktabNews.Infrastructure.EfCore.Common;
 using MaktabNews.Infrastructure.EfCore.Repositories;
@@ -33,28 +34,30 @@ builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 
 builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
 
-// Add services to the container.
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .Build();
 
+var siteSettings = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
 
+builder.Services.AddSingleton(siteSettings);
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = "localhost:6379";
+    options.Configuration = siteSettings.RedisConfiguration.ConnectionString;
     options.ConfigurationOptions = new ConfigurationOptions
     {
         Password = string.Empty,
         DefaultDatabase = 10,
         ConnectTimeout = 5000,
     };
-    options.ConfigurationOptions.EndPoints.Add("localhost:6379");
+    options.ConfigurationOptions.EndPoints.Add(siteSettings.RedisConfiguration.ConnectionString);
 });
-
 
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<AppDbContext>(options
-    => options.UseSqlServer(
-        "Data Source=masoud;Initial Catalog=MaktabNews;User ID=sa;Password=25915491;TrustServerCertificate=True;Encrypt=True"));
+    => options.UseSqlServer(siteSettings.SqlConfiguration.ConnectionsString));
 
 var app = builder.Build();
 

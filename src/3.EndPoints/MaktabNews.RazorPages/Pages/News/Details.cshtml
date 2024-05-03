@@ -197,7 +197,7 @@
                         <h5>نوشته های اخیر</h5>
                     </div>
                     <ul class="widget-latest-posts">
-                        @foreach (var news in @NewsAppServices.GetRecent(5))
+                        @foreach (var news in await @NewsAppServices.GetRecent(default))
                         {
                             {
                                 counter++;
@@ -229,7 +229,7 @@
                         <h5>دسته بندیها</h5>
                     </div>
                     <ul class="widget-categories">
-                        @foreach (var category in @CategoryAppServices.GetCategoriesWithCount())
+                        @foreach (var category in  await @CategoryAppServices.GetCategoriesWithCount(default))
                         {
                             <li>
                                 <a href="#" class="categorie">@category.Title</a>
@@ -247,7 +247,7 @@
                     </div>
                     <div class="widget-tags">
                         <ul class="list-inline">
-                            @foreach (var tag in @TagAppServices.GetAll())
+                            @foreach (var tag in await @TagAppServices.GetAll(default))
                             {
                                 <li>
                                     <a href="#">@tag.Title</a>

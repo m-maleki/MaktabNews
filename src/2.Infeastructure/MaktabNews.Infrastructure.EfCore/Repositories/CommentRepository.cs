@@ -6,7 +6,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
     public class CommentRepository :ICommentRepository
 
     {
-        public List<CommentViewDto> GetComments(int id)
+        public async Task<List<CommentViewDto>> GetComments(int id,CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

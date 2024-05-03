@@ -13,9 +13,9 @@ namespace MaktabNews.Domain.AppServices
             _reporterServices = reporterServices;
         }
 
-        public ReporterSummeryDto GetSummery(int id)
+        public async Task<ReporterSummeryDto> GetSummery(int id,CancellationToken cancellationToken)
         {
-            return _reporterServices.GetSummery(id);
+            return await _reporterServices.GetSummery(id, cancellationToken);
         }
     }
 }

@@ -13,10 +13,10 @@ namespace MaktabNews.Domain.AppServices
             _categoryServices = categoryServices;
         }
 
-        public List<CategoryMenuDto> GetCategoriesForMenu()
-            => _categoryServices.GetCategoriesForMenu();
+        public async Task<List<CategoryMenuDto>> GetCategoriesForMenu(CancellationToken cancellationToken)
+            => await _categoryServices.GetCategoriesForMenu(cancellationToken);
 
-        public List<CategoryWithCountDto> GetCategoriesWithCount()
-            => _categoryServices.GetCategoriesWithCount();
+        public async Task<List<CategoryWithCountDto>> GetCategoriesWithCount(CancellationToken cancellationToken)
+            => await _categoryServices.GetCategoriesWithCount(cancellationToken);
     }
 }

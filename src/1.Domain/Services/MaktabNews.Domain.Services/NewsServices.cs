@@ -13,19 +13,19 @@ namespace MaktabNews.Domain.Services
             _newsRepository = newsRepository;
         }
 
-        public List<NewsSummeryDto> GetAll()
+        public async Task<List<NewsSummeryDto>> GetAll(CancellationToken cancellationToken)
         {
-            return _newsRepository.GetAll();
+            return await _newsRepository.GetAll(cancellationToken);
         }
 
-        public NewsDetailsDto GetDetails(int id)
+        public async Task<NewsDetailsDto> GetDetails(int id,CancellationToken cancellationToken)
         {
-            return _newsRepository.GetDetails(id);
+            return await _newsRepository.GetDetails(id, cancellationToken);
         }
 
-        public List<NewsRecentDto> GetRecent(int count)
+        public async Task<List<NewsRecentDto>> GetRecent(int count, CancellationToken cancellationToken)
         {
-            return _newsRepository.GetRecent(count);
+            return await _newsRepository.GetRecent(count, cancellationToken);
         }
     }
 }

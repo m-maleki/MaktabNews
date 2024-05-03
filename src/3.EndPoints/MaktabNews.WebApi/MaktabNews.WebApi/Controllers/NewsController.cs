@@ -17,24 +17,24 @@ namespace MaktabNews.WebApi.Controllers
 
         [HttpGet]
         [Route(nameof(GetAll))]
-        public List<NewsSummeryDto> GetAll()
+        public async Task<List<NewsSummeryDto>> GetAll(CancellationToken cancellationToken)
         {
-            return _newsAppServices.GetAll();
+            return await _newsAppServices.GetAll(cancellationToken);
         }
 
         [HttpGet]
         [Route(nameof(GetDetail))]
-        public NewsDetailsDto GetDetail(int id)
+        public async Task<NewsDetailsDto> GetDetail(int id,CancellationToken cancellationToken)
         {
-            return _newsAppServices.GetDetails(id);
+            return await _newsAppServices.GetDetails(id, cancellationToken);
         }
 
 
         [HttpGet]
         [Route(nameof(GetRecent))]
-        public List<NewsRecentDto> GetRecent()
+        public async Task<List<NewsRecentDto>> GetRecent(CancellationToken cancellationToken)
         {
-            return _newsAppServices.GetRecent(5);
+            return await _newsAppServices.GetRecent(cancellationToken);
         }
     }
 }

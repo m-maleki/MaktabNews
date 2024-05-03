@@ -1,6 +1,7 @@
 ﻿using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.Services;
 using MaktabNews.Domain.Core.Dtos.Reporter;
+using System.Threading;
 
 namespace MaktabNews.Domain.Services
 {
@@ -13,9 +14,9 @@ namespace MaktabNews.Domain.Services
             _reporterRepository = reporterRepository;
         }
 
-        public ReporterSummeryDto GetSummery(int id)
+        public async Task<ReporterSummeryDto> GetSummery(int id, CancellationToken cancellationToken)
         {
-            return _reporterRepository.GetSummery(id);
+            return await _reporterRepository.GetSummery(id, cancellationToken);
         }
     }
 }

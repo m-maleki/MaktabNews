@@ -4,6 +4,6 @@ namespace MaktabNews.Domain.Core.Contracts.Services
 {
     public interface ITagServices
     {
-        public List<TagViewDto> GetAll();
+        Task<List<TagViewDto>> GetAll(CancellationToken cancellationToken);
     }
 }

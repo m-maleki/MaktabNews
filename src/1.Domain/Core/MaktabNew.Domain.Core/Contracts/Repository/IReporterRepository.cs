@@ -4,6 +4,6 @@ namespace MaktabNews.Domain.Core.Contracts.Repository
 {
     public interface IReporterRepository
     {
-        public ReporterSummeryDto GetSummery(int id);
+        Task<ReporterSummeryDto> GetSummery(int id, CancellationToken cancellationToken);
     }
 }

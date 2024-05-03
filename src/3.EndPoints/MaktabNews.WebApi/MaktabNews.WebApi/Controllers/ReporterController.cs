@@ -18,9 +18,9 @@ namespace MaktabNews.WebApi.Controllers
 
         [HttpGet]
         [Route(nameof(GetSummary))]
-        public ReporterSummeryDto GetSummary(int id)
+        public async Task<ReporterSummeryDto> GetSummary(int id,CancellationToken cancellationToken)
         {
-            return _reporterAppServices.GetSummery(id);
+            return await _reporterAppServices.GetSummery(id, cancellationToken);
         }
     }
 }

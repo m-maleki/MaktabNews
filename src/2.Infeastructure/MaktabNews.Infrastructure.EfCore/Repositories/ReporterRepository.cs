@@ -1,6 +1,7 @@
 ﻿using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Dtos.Reporter;
 using MaktabNews.Infrastructure.EfCore.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MaktabNews.Infrastructure.EfCore.Repositories
@@ -14,16 +15,16 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             _appDbContext = appDbContext;
         }
 
-        public ReporterSummeryDto GetSummery(int id)
+        public async Task<ReporterSummeryDto> GetSummery(int id,CancellationToken cancellationToken)
         {
-            var result = _appDbContext.Reporters
+            var result = await _appDbContext.Reporters
                 .Select(x => new ReporterSummeryDto
                 {
                     Id = x.Id,
                     FullName = x.FullName,
                     AboutMe = x.AboutMe,
                     ImageAddress = x.ImageAddress
-                }).FirstOrDefault(x=>x.Id == id);
+                }).FirstOrDefaultAsync(x=>x.Id == id, cancellationToken);
 
             return result ?? new ReporterSummeryDto();
         }

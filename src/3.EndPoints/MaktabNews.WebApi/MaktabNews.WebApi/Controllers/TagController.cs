@@ -17,9 +17,9 @@ namespace MaktabNews.WebApi.Controllers
 
         [HttpGet]
         [Route(nameof(GetAll))]
-        public List<TagViewDto> GetAll()
+        public async Task<List<TagViewDto>> GetAll(CancellationToken cancellationToken)
         {
-            return _tagAppServices.GetAll();
+            return await _tagAppServices.GetAll(cancellationToken);
         }
     }
 }

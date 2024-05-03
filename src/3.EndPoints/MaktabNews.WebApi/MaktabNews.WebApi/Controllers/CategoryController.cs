@@ -17,16 +17,16 @@ namespace MaktabNews.WebApi.Controllers
 
         [HttpGet]
         [Route(nameof(GetCategoriesForMenu))]
-        public List<CategoryMenuDto> GetCategoriesForMenu()
+        public async Task<List<CategoryMenuDto>> GetCategoriesForMenu(CancellationToken cancellationToken)
         {
-            return _categoryAppServices.GetCategoriesForMenu();
+            return await _categoryAppServices.GetCategoriesForMenu(cancellationToken);
         }
 
         [HttpGet]
         [Route(nameof(GetCategoriesWithCount))]
-        public List<CategoryWithCountDto> GetCategoriesWithCount()
+        public async Task<List<CategoryWithCountDto>> GetCategoriesWithCount(CancellationToken cancellationToken)
         {
-            return _categoryAppServices.GetCategoriesWithCount();
+            return await _categoryAppServices.GetCategoriesWithCount(cancellationToken);
         }
     }
 }
