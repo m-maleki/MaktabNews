@@ -21,8 +21,6 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
 
         public async Task<List<CategoryMenuDto>> GetCategoriesForMenu(CancellationToken cancellationToken)
         {
-            throw new Exception("This is test");
-
             var result = _redisCacheServices.Get<List<CategoryMenuDto>>("CategoriesForMenu");
 
             if (result == null)

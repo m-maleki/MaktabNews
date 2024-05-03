@@ -71,7 +71,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             }
             else
             {
-                throw new Exception("News not found");
+                throw new Exception($"news with id {id} not found");
             }
         }
 

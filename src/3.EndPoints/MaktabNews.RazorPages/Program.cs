@@ -83,6 +83,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.CustomExceptionHandlingMiddleware();
 
 app.UseHttpsRedirection();
@@ -93,5 +95,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+
+app.DetectVpnMiddleware();
 
 app.Run();

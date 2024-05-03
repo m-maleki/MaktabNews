@@ -6,4 +6,9 @@ public static class MiddlewareExtensions
     {
         return builder.UseMiddleware<ExceptionHandlingMiddleware>();
     }
+
+    public static IApplicationBuilder DetectVpnMiddleware(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<DetectVpnMiddleware>();
+    }
 }

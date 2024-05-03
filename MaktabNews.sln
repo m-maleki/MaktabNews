@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "src\0.Framewor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaktabNews.WebApi", "src\3.EndPoints\MaktabNews.WebApi\MaktabNews.WebApi\MaktabNews.WebApi.csproj", "{EB9650B8-C7A2-428C-A1A3-769F02B4F6B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaktabNews.Redis", "src\2.Infeastructure\MaktabNews.Infrastructure.Redis\MaktabNews.Infrastructure.Redis\MaktabNews.Redis\MaktabNews.Redis.csproj", "{5386B117-197D-4FD1-BBBF-C1E3097ED204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaktabNews.Redis", "src\2.Infeastructure\MaktabNews.Infrastructure.Redis\MaktabNews.Infrastructure.Redis\MaktabNews.Redis\MaktabNews.Redis.csproj", "{5386B117-197D-4FD1-BBBF-C1E3097ED204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

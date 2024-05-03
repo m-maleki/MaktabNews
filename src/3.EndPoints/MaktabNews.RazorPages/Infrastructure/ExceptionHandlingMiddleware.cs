@@ -1,4 +1,6 @@
-﻿namespace MaktabNews.RazorPages.Infrastructure;
+﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
+
+namespace MaktabNews.RazorPages.Infrastructure;
 
 public class ExceptionHandlingMiddleware
 {
