@@ -9,6 +9,8 @@ using MaktabNews.Infrastructure.EfCore.Common;
 using MaktabNews.Infrastructure.EfCore.Repositories;
 using MaktabNews.Redis;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Events;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +54,17 @@ builder.Services.AddStackExchangeRedisCache(options =>
         ConnectTimeout = 5000,
     };
     options.ConfigurationOptions.EndPoints.Add(siteSettings.RedisConfiguration.ConnectionString);
+});
+
+builder.Logging.ClearProviders();
+
+builder.Host.ConfigureLogging(loggingBuilder =>
+{
+    loggingBuilder.ClearProviders();
+
+}).UseSerilog((context, config) =>
+{
+    config.WriteTo.Seq(siteSettings.LogConfiguration.SeqAddress, LogEventLevel.Error);
 });
 
 builder.Services.AddRazorPages();
