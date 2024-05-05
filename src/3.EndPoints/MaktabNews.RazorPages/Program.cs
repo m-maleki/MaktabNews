@@ -68,7 +68,8 @@ builder.Host.ConfigureLogging(loggingBuilder =>
     config.WriteTo.Seq(siteSettings.LogConfiguration.SeqAddress, LogEventLevel.Error);
 });
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
 builder.Services.AddDbContext<AppDbContext>(options
     => options.UseSqlServer(siteSettings.SqlConfiguration.ConnectionsString));

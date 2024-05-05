@@ -1,0 +1,314 @@
+﻿@using Framework
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="rtl">
+
+<!-- Mirrored from www.rayanik.com/demo/modiran/light/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 May 2022 15:30:57 GMT -->
+<head>
+    <title>قالب مدیریتی مدیران</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="قالب مدیریت ایرانی مدیران ">
+    <meta name="keywords" content="قالب مدیریت, قالب داشبورد, قالب ادمین, قالب مدیران, قالب مدیریت راستچین , قالب ایرانی مدیریت, پوسته مدیریت, قالب ادمین داشبورد سایت, قالب مدیریتی, مدیران, قالب مدیریت مدیران, پنل مدیریت, پنل مدیریت مدرن, قالب ادمین متریال, قالب مدیریت بوت استرپ, قالب ادمین بوتسترپ, قالب ادمین سایت, پوسته مدیریتی ایرانی, قالب مدیرتی مدیران ایرانی, بهترین قالب مدیریت, قالب مدیریت ریسپانسیو, قالب مدیریت ارزان, قالب admin">
+    <meta name="fontiran.com:license" content="NE29X">
+    <link rel="shortcut icon" href="~/adminAssets/images/favicon.png">
+
+    <!-- BEGIN CSS -->
+    <link href="~/adminAssets/plugins/bootstrap/bootstrap5/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/simple-line-icons/css/simple-line-icons.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/paper-ripple/dist/paper-ripple.min.css" rel="stylesheet">
+    <link href="~/adminAssets/plugins/iCheck/skins/square/_all.css" rel="stylesheet">
+    <link href="~/adminAssets/css/style.css" rel="stylesheet">
+    <link href="~/adminAssets/css/colors.css" rel="stylesheet">
+    <!-- END CSS -->
+
+</head>
+<body class="active-ripple theme-blue fix-header sidebar-extra">
+    <!-- BEGIN LOEADING -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div><!-- /loader -->
+    <!-- END LOEADING -->
+    <!-- BEGIN HEADER -->
+    <div class="navbar navbar-fixed-top" id="main-navbar">
+        <div class="header-right">
+            <a href="dashboard.html" class="logo-con">
+                <img src="~/adminAssets/images/logo.png" class="img-responsive center-block" alt="لوگو قالب مدیران">
+            </a>
+        </div><!-- /.header-right -->
+        <div class="header-left">
+            <div class="top-bar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="btn" id="toggle-sidebar">
+                            <span class="menu"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn open" id="toggle-sidebar-top">
+                            <i class="icon-user-following"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn" id="toggle-dark-mode">
+                            <i class="icon-bulb"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="btn" id="toggle-fullscreen">
+                            <i class="icon-size-fullscreen"></i>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle dropdown-hover" data-bs-toggle="dropdown">
+                            <img src="~/adminAssets/images/user/48.png" alt="عکس پرفایل" class="img-circle img-responsive">
+                            <span>حمید آفرینش فر</span>
+                            <i class="icon-arrow-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="edit_profile.html">
+                                    <i class="icon-note"></i>
+                                    ویرایش پروفایل
+                                </a>
+                            </li>
+                            <li>
+                                <a href="change_password.html">
+                                    <i class="icon-key"></i>
+                                    تغییر رمز عبور
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="chat.html">
+                                    <span class="badge badge-primary float-end"> 14 </span>
+                                    <i class="icon-envelope"></i>
+                                    تیکت های جدید
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-wallet"></i>
+                                    کیف پول
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="login.html">
+                                    <i class="icon-power"></i>
+                                    خروج
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /.navbar-left -->
+            </div><!-- /.top-bar -->
+        </div><!-- /.header-left -->
+    </div><!-- /.navbar -->
+    <!-- END HEADER -->
+    <!-- BEGIN WRAPPER -->
+    <div id="wrapper">
+
+        <!-- BEGIN SIDEBAR -->
+        <div id="sidebar">
+            <div class="side-menu-container">
+                <ul class="metismenu" id="side-menu">
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-home"></i>
+                            <span>پیشخوان</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="dashboard.html" class="">
+                                    <i class="icon-home"></i>
+                                    <span>پیشخوان یک</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dashboard2.html" class="">
+                                    <i class="icon-home"></i>
+                                    <span>پیشخوان دو</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-frame"></i>
+                            <span>فرم ها</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="forms.html" class="">
+                                    <i class="icon-frame"></i>
+                                    <span>فرم ها</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="validation.html" class="">
+                                    <i class="icon-shield"></i>
+                                    <span>اعتبارسنجی</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /#side-menu -->
+            </div><!-- /.side-menu-container -->
+        </div><!-- /#sidebar -->
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE CONTENT -->
+        <div id="page-content">
+            <div class="row">
+                <!-- BEGIN BREADCRUMB -->
+                <div class="col-md-12">
+                    <div class="breadcrumb-box border shadow">
+                        <ul class="breadcrumb">
+                            <li><a href="dashboard.html">پیشخوان</a></li>
+                            <li><a href="#">صفحات</a></li>
+                            <li class="active">صفحه خام</li>
+                        </ul>
+                        <div class="breadcrumb-left">
+                            @DateTime.Now.ToPersianString("yyyy/MM/dd")
+                            <i class="icon-calendar"></i>
+                        </div><!-- /.breadcrumb-left -->
+                    </div><!-- /.breadcrumb-box -->
+                </div><!-- /.col-md-12 -->
+                <!-- END BREADCRUMB -->
+
+                <div class="col-12">
+                    <div class="portlet box border shadow">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h3 class="title">
+                                    <i class="icon-note"></i>
+                                    @ViewData["Title"]
+                                </h3>
+                            </div><!-- /.portlet-title -->
+                            <div class="buttons-box">
+                                <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip" title="تمام صفحه" href="#">
+                                    <i class="icon-size-fullscreen"></i>
+                                </a>
+                                <a class="btn btn-sm btn-default btn-round btn-collapse" rel="tooltip" title="کوچک کردن" href="#">
+                                    <i class="icon-arrow-up"></i>
+                                </a>
+                            </div><!-- /.buttons-box -->
+                        </div><!-- /.portlet-heading -->
+                        <div class="portlet-body">
+                            <div>
+                                @RenderBody()
+                            </div>
+                        </div><!-- /.portlet-body -->
+                    </div><!-- /.portlet -->
+                </div><!-- /.col-12 -->
+            </div><!-- /.row -->
+        </div><!-- /#page-content -->
+        <!-- END PAGE CONTENT -->
+
+    </div><!-- /#wrapper -->
+    <!-- END WRAPPER -->
+
+    <div class="row footer-container">
+        <div class="col-md-12">
+            <div class="copyright">
+                <p class="float-start">
+                    کلیه حقوق قالب مدیران محفوظ می باشد و کپی برداری از آن به هیچ عنوان جایز نیست.
+                </p>
+                <p class="float-end ltr tahoma">
+                    <span>©</span>
+                    <a href="http://www.rayanik.com/" target="_blank">Rayanik</a>
+                </p>
+            </div><!-- /.copyright -->
+        </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+    <!-- BEGIN SETTING -->
+    <div class="settings d-none d-sm-block">
+        <a href="#" class="btn" id="toggle-setting">
+            <i class="icon-settings"></i>
+        </a>
+        <h3 class="text-center">تنظیمات</h3>
+
+        <div class="fix-header-box">
+            <p class="h6">
+                هدر ثابت:
+                <span class="pull-left">
+                    <input type="checkbox" class="fix-header-switch normal" checked>
+                </span>
+            </p>
+        </div><!-- /.fix-header-box -->
+        <hr class="light">
+        <div class="toggle-sidebar-box">
+            <p class="h6">
+                جمع کردن سایدبار:
+                <span class="pull-left">
+                    <input type="checkbox" class="toggle-sidebar-switch normal">
+                </span>
+            </p>
+        </div><!-- /.toggle-sidebar-box -->
+        <hr class="light">
+        <div class="toggle-sidebar-box">
+            <p class="h6">
+                سایدبار خلاقانه:
+                <span class="pull-left">
+                    <input type="checkbox" class="creative-sidebar-switch normal">
+                </span>
+            </p>
+        </div><!-- /.toggle-sidebar-box -->
+        <hr class="light">
+        <div class="theme-colors">
+            <p class="h6">رنگ قالب : </p>
+            <a class="btn btn-round btn-blue ripple-effect active" data-color="blue"></a>
+            <a class="btn btn-round btn-red ripple-effect" data-color="red"></a>
+            <a class="btn btn-round btn-green ripple-effect" data-color="green"></a>
+            <a class="btn btn-round btn-orange ripple-effect" data-color="orange"></a>
+            <a class="btn btn-round btn-purple ripple-effect" data-color="purple"></a>
+            <a class="btn btn-round btn-deeporange ripple-effect" data-color="deeporange"></a>
+            <a class="btn btn-round btn-cyan ripple-effect" data-color="cyan"></a>
+            <a class="btn btn-round btn-rose ripple-effect" data-color="rose"></a>
+            <a class="btn btn-round btn-lime ripple-effect" data-color="lime"></a>
+            <a class="btn btn-round btn-darkorange ripple-effect" data-color="darkorange"></a>
+        </div><!-- /.theme-colors -->
+        <div class="theme-code ltr text-left">
+            <code></code>
+        </div><!-- /.theme-code -->
+    </div><!-- /.settings -->
+    <!-- END SETTING -->
+    <!-- BEGIN CODE MODAL -->
+    <div class="modal fade" id="code-modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-default btn-round btn-icon float-start" id="btn-copy"><i class="fa fa-copy"></i></button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">کپی کردن کدها</h4>
+                </div>
+                <div class="modal-body"></div>
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+    <!-- END CODE MODAL -->
+    <!-- BEGIN JS -->
+    <script src="~/adminAssets/plugins/jquery/dist/jquery-3.1.0.js"></script>
+    <script src="~/adminAssets/plugins/bootstrap/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="~/adminAssets/plugins/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="~/adminAssets/plugins/paper-ripple/dist/PaperRipple.min.js"></script>
+    <script src="~/adminAssets/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/adminAssets/plugins/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="~/adminAssets/plugins/screenfull/dist/screenfull.min.js"></script>
+    <script src="~/adminAssets/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/adminAssets/plugins/switchery/dist/switchery.js"></script>
+    <script src="~/adminAssets/js/core.js"></script>
+
+
+</body>
+
+<!-- Mirrored from www.rayanik.com/demo/modiran/light/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 May 2022 15:30:57 GMT -->
+</html>

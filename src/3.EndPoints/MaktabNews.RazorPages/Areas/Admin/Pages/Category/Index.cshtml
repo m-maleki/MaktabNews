@@ -1,0 +1,43 @@
+﻿@page
+@inject ICategoryAppServices CategoryAppServices
+
+@using MaktabNews.Domain.Core.Contracts.AppServifces
+@model MaktabNews.RazorPages.Areas.Admin.Pages.Category.IndexModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "مدیریت دسته بندی ها";
+}
+
+<a href="@Url.Page("Create")" class="btn btn-success btn-round p-2 m-2">ایجاد دسته بندی جدید</a>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped" id="data-table">
+        <thead>
+            <tr>
+                <th>ردیف</th>
+                <th>عنوان</th>
+                <th>تعداد خبر</th>
+                <td>عملیات</td>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var category in await @CategoryAppServices.GetCategoriesWithCount(default))
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Title</td>
+                    <td>@category.NewsCount</td>
+                    <td>
+                        <a asp-page="Update" asp-route-id="@category.Id" class="btn btn-warning btn-round">ویرایش</a>
+                        <a asp-page-handler="Delete" asp-route-id="@category.Id" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-round">حذف</a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</div>

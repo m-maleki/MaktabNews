@@ -24,5 +24,6 @@ namespace MaktabNews.Pages
             _logger.LogInformation("This is test log");
             News = await _newsAppServices.GetAll(cancellationToken);
         }
+
     }
 }

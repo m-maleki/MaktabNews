@@ -18,5 +18,17 @@ namespace MaktabNews.Domain.Services
 
         public async Task<List<CategoryWithCountDto>> GetCategoriesWithCount(CancellationToken cancellationToken)
             => await _categoryRepository.GetCategoriesWithCount(cancellationToken);
+
+        public async Task Create(string title, CancellationToken cancellationToken)
+            => await _categoryRepository.Create(title, cancellationToken);
+
+        public async Task Delete(int id, CancellationToken cancellationToken)
+            => await _categoryRepository.Delete(id, cancellationToken);
+
+        public async Task<string> GetById(int id, CancellationToken cancellationToken)
+            => await _categoryRepository.GetById(id, cancellationToken);
+
+        public async Task Update(int id, string title, CancellationToken cancellationToken)
+            => await _categoryRepository.Update(id, title, cancellationToken);
     }
 }

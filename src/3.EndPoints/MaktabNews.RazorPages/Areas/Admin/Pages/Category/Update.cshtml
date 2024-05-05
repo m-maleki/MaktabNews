@@ -1,0 +1,25 @@
+﻿@page
+@model MaktabNews.RazorPages.Areas.Admin.Pages.Category.UpdateModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "بروزرسانی دسته بندی";
+}
+
+<div class="portlet-body" style="">
+    <form method="post">
+        <div class="form-body">
+            <div class="input-group">
+                <input asp-for="CategoryName" type="text" class="form-control" placeholder="عنوان دسته بندی جدید را وارد کنید">
+                <span class="input-group-btn">
+                    <input asp-for="Id" type="hidden"></input>
+                    <button class="btn btn-primary" type="submit">ویرایش دسته بندی
+                        <div class="paper-ripple">
+                            <div class="paper-ripple__background"></div>
+                            <div class="paper-ripple__waves"></div></div></button>
+                </span>
+            </div><!-- ./input-group -->
+        </div><!-- /.form-body -->
+    </form>
+    <hr>
+
+</div>
