@@ -1,20 +1,23 @@
-using MaktabNews.Domain.AppServices;
-using MaktabNews.Domain.Core.Contracts.AppServices;
-using MaktabNews.Domain.Core.Contracts.AppServifces;
-using MaktabNews.Domain.Core.Contracts.Repository;
-using MaktabNews.Domain.Core.Contracts.Services;
-using MaktabNews.Domain.Core.Entities.Configs;
-using MaktabNews.Domain.Services;
-using MaktabNews.Infrastructure.EfCore.Common;
-using MaktabNews.Infrastructure.EfCore.Repositories;
-using MaktabNews.RazorPages.Infrastructure;
-using MaktabNews.Redis;
-using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
+using MaktabNews.Redis;
 using StackExchange.Redis;
+using MaktabNews.Domain.Services;
+using MaktabNews.Domain.AppServices;
+using Microsoft.EntityFrameworkCore;
+using MaktabNews.RazorPages.Infrastructure;
+using MaktabNews.Domain.Core.Entities.Configs;
+using MaktabNews.Infrastructure.EfCore.Common;
+using MaktabNews.Domain.Core.Contracts.Services;
+using MaktabNews.Domain.Core.Contracts.Repository;
+using MaktabNews.Domain.Core.Contracts.AppServices;
+using MaktabNews.Domain.Core.Contracts.AppServifces;
+using MaktabNews.Infrastructure.EfCore.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Register Services
+
 
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<INewsServices, NewsServices>();
@@ -37,6 +40,11 @@ builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 
 builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
 
+#endregion
+
+#region Configuration
+
+
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
@@ -44,6 +52,10 @@ var configuration = new ConfigurationBuilder()
 var siteSettings = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
 
 builder.Services.AddSingleton(siteSettings);
+
+#endregion
+
+#region CacheConfiguration
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
@@ -57,6 +69,10 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.ConfigurationOptions.EndPoints.Add(siteSettings.RedisConfiguration.ConnectionString);
 });
 
+#endregion
+
+#region LogConfiguration
+
 builder.Logging.ClearProviders();
 
 builder.Host.ConfigureLogging(loggingBuilder =>
@@ -68,11 +84,18 @@ builder.Host.ConfigureLogging(loggingBuilder =>
     config.WriteTo.Seq(siteSettings.LogConfiguration.SeqAddress, LogEventLevel.Error);
 });
 
-builder.Services.AddRazorPages()
-    .AddRazorRuntimeCompilation();
+#endregion
+
+#region EfConfiguration
 
 builder.Services.AddDbContext<AppDbContext>(options
     => options.UseSqlServer(siteSettings.SqlConfiguration.ConnectionsString));
+
+#endregion
+
+
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
