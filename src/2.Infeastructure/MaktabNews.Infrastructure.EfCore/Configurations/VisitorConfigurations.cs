@@ -15,10 +15,6 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                 {
                     Id = 4,
                     FullName = "علی محمدی",
-                    Email = "Ali.Mohammadi@Gmail.com",
-                    Password = "1qaz!QAZ",
-                    UserRole = UserRole.Visitor,
-                    ImageAddress = "~/assets/img/user/2.jpg"
                 }
             });
         }

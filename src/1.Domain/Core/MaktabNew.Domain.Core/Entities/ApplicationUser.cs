@@ -1,13 +1,13 @@
 ﻿using MaktabNew.Domain.Core.Enum;
+using Microsoft.AspNetCore.Identity;
 
 namespace MaktabNew.Domain.Core.Entities;
-public abstract class User
+public class ApplicationUser : IdentityUser<int>
 {
-    public int Id { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string FullName { get; set; }
+    public Reporter? Reporter { get; set; }
+    public Visitor? Visitor { get; set; }
     public string? ImageAddress { get; set; }
     public UserRole UserRole { get; set; }
     public List<Comment> Comments { get; set; }
+    public string? FullName { get; set; }
 }

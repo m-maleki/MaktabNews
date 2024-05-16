@@ -13,6 +13,8 @@ using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.AppServices;
 using MaktabNews.Domain.Core.Contracts.AppServifces;
 using MaktabNews.Infrastructure.EfCore.Repositories;
+using MaktabNew.Domain.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +41,10 @@ builder.Services.AddScoped<IReporterServices, ReporterServices>();
 builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 
 builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
+
+builder.Services.AddScoped<IAccountAppServices, AccountAppServices>();
+
+
 
 #endregion
 
@@ -93,6 +99,24 @@ builder.Services.AddDbContext<AppDbContext>(options
 
 #endregion
 
+#region IdentityConfiguration
+
+builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>
+    (options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+    })
+    .AddRoles<IdentityRole<int>>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
+#endregion
+
+
 
 builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
@@ -116,6 +140,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

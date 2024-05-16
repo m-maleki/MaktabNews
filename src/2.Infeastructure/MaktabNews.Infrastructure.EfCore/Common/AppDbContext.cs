@@ -1,9 +1,11 @@
 ﻿using MaktabNew.Domain.Core.Entities;
 using MaktabNews.Infrastructure.EfCore.Configurations;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Infrastructure.EfCore.Common;
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<ApplicationUser,IdentityRole<int>,int>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -12,7 +14,6 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new AdminConfigurations());
         modelBuilder.ApplyConfiguration(new ReporterConfigurations());
         modelBuilder.ApplyConfiguration(new VisitorConfigurations());
         modelBuilder.ApplyConfiguration(new CategoryConfigurations());
@@ -28,5 +29,4 @@ public class AppDbContext : DbContext
     public DbSet<Tag> Tages { get; set; }
     public DbSet<Reporter> Reporters { get; set; }
     public DbSet<Visitor> Visitors { get; set; }
-    public DbSet<Admin> Admins { get; set; }
 }

@@ -4,6 +4,7 @@ using MaktabNews.Infrastructure.EfCore.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaktabNews.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240516192413_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,19 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admins");
+                });
 
             modelBuilder.Entity("MaktabNew.Domain.Core.Entities.ApplicationUser", b =>
                 {
@@ -31,6 +47,9 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AdminId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -94,6 +113,8 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -238,7 +259,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreateAt = new DateTime(2024, 5, 16, 22, 56, 8, 999, DateTimeKind.Local).AddTicks(9165),
+                            CreateAt = new DateTime(2024, 5, 16, 22, 54, 12, 947, DateTimeKind.Local).AddTicks(7779),
                             Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
                             ImageAddress = "~/assets/img/blog/2.jpg",
                             IsActive = true,
@@ -529,6 +550,10 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("MaktabNew.Domain.Core.Entities.ApplicationUser", b =>
                 {
+                    b.HasOne("MaktabNew.Domain.Core.Entities.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId");
+
                     b.HasOne("MaktabNew.Domain.Core.Entities.Reporter", "Reporter")
                         .WithMany()
                         .HasForeignKey("ReporterId");
@@ -536,6 +561,8 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.HasOne("MaktabNew.Domain.Core.Entities.Visitor", "Visitor")
                         .WithMany()
                         .HasForeignKey("VisitorId");
+
+                    b.Navigation("Admin");
 
                     b.Navigation("Reporter");
 
