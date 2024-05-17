@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Infrastructure.EfCore.Common;
-public class AppDbContext : IdentityDbContext<ApplicationUser,IdentityRole<int>,int>
+public class AppDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -20,8 +20,11 @@ public class AppDbContext : IdentityDbContext<ApplicationUser,IdentityRole<int>,
         modelBuilder.ApplyConfiguration(new TagConfigurations());
         modelBuilder.ApplyConfiguration(new NewsConfigurations());
 
+        UserConfigurations.SeedUsers(modelBuilder);
+
         base.OnModelCreating(modelBuilder);
     }
+
 
     public DbSet<News> News { get; set; }
     public DbSet<Category> Categories { get; set; }

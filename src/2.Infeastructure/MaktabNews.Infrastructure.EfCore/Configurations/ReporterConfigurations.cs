@@ -13,21 +13,27 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
             {
                 new Reporter()
                 {
-                    Id = 1,
-                    FullName = "علی محمدی",
-                    ImageAddress = "/assets/img/author/1.jpg"
-                },
-                new Reporter()
-                {
                     Id = 2,
-                    FullName = "سحر رمضانی",
-                    ImageAddress = "/assets/img/author/2.jpg"
+                    FullName = "علی محمدی",
+                    ImageAddress = "/assets/img/author/1.jpg",
+                    Address = "تهران، خیابان بهشتی",
+                    AboutMe = "من دیوید اسمیت هستم، شوهر و پدر، عاشق عکاسی، سفر و طبیعت هستم. من به عنوان نویسنده و وبلاگ نویس با 5 سال سابقه کار می کنم."
                 },
                 new Reporter()
                 {
                     Id = 3,
+                    FullName = "سحر رمضانی",
+                    ImageAddress = "/assets/img/author/2.jpg",
+                    Address = "تهران، خیابان بهشتی",
+                    AboutMe = "من دیوید اسمیت هستم، شوهر و پدر، عاشق عکاسی، سفر و طبیعت هستم. من به عنوان نویسنده و وبلاگ نویس با 5 سال سابقه کار می کنم."
+                },
+                new Reporter()
+                {
+                    Id = 4,
                     FullName = "مریم اکبری",
-                    ImageAddress = "/assets/img/author/3.jpg"
+                    ImageAddress = "/assets/img/author/3.jpg",
+                    Address = "تهران، خیابان بهشتی",
+                    AboutMe = "من دیوید اسمیت هستم، شوهر و پدر، عاشق عکاسی، سفر و طبیعت هستم. من به عنوان نویسنده و وبلاگ نویس با 5 سال سابقه کار می کنم."
                 },
 
             });

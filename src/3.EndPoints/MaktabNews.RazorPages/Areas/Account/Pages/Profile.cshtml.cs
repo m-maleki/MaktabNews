@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MaktabNews.RazorPages.Areas.Account.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Visitor,Reporter")]
     public class ProfileModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;

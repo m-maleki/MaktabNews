@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MaktabNews.Domain.Core.Entities;
+﻿using MaktabNews.Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace MaktabNews.Infrastructure.EfCore.Configurations
 {
@@ -15,6 +9,11 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
         public void Configure(EntityTypeBuilder<News> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.HasMany(x => x.Comments)
+                .WithOne(x => x.News)
+                .HasForeignKey(x => x.Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasData(new List<News>()
             {
@@ -41,7 +40,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 841,
-                    ReporterId = 1,
+                    ReporterId = 4,
                     ImageAddress = "/assets/img/blog/2.jpg",
                 },
                 new News()
@@ -54,7 +53,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 625,
-                    ReporterId = 1,
+                    ReporterId = 4,
                     ImageAddress = "/assets/img/blog/3.jpg",
                 },
                 new News()
@@ -119,7 +118,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 340,
-                    ReporterId = 1,
+                    ReporterId = 4,
                     ImageAddress = "/assets/img/blog/8.jpg",
                 },
                 new News()
