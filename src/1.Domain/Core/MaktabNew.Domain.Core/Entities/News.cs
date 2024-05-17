@@ -1,4 +1,5 @@
-﻿namespace MaktabNew.Domain.Core.Entities;
+﻿
+namespace MaktabNews.Domain.Core.Entities;
 public class News
 {
     public int Id { get; set; }

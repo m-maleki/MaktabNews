@@ -1,4 +1,6 @@
-﻿namespace MaktabNew.Domain.Core.Entities;
+﻿using MaktabNews.Domain.Core.Entities;
+
+namespace MaktabNews.Domain.Core.Entities;
 
 public class Category
 {

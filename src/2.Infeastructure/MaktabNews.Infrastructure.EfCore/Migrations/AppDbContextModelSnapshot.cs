@@ -22,7 +22,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.ApplicationUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,6 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageAddress")
@@ -74,7 +73,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ReporterId")
+                    b.Property<int>("ReporterId")
                         .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
@@ -90,7 +89,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.Property<int>("UserRole")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VisitorId")
+                    b.Property<int>("VisitorId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -110,7 +109,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Category", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +153,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Comment", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -172,7 +171,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("NewsId")
+                    b.Property<int>("NewsId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -187,7 +186,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.News", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.News", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,18 +237,122 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreateAt = new DateTime(2024, 5, 16, 22, 56, 8, 999, DateTimeKind.Local).AddTicks(9165),
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2073),
                             Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
-                            ImageAddress = "~/assets/img/blog/2.jpg",
+                            ImageAddress = "/assets/img/blog/1.jpg",
                             IsActive = true,
                             ReporterId = 2,
                             ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
                             Title = "اگر روزی اردن پترا را ببینید چه رازهایی در مورد آن خواهید دانست؟",
+                            VisitCount = 923
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2088),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/2.jpg",
+                            IsActive = true,
+                            ReporterId = 1,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 841
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2091),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/3.jpg",
+                            IsActive = true,
+                            ReporterId = 1,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 625
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 3,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2093),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/4.jpg",
+                            IsActive = true,
+                            ReporterId = 3,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 5
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2095),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/5.jpg",
+                            IsActive = true,
+                            ReporterId = 2,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 90
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 2,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2098),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/6.jpg",
+                            IsActive = true,
+                            ReporterId = 2,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 45
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 1,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2100),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/7.jpg",
+                            IsActive = true,
+                            ReporterId = 3,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
                             VisitCount = 150
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 4,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2102),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/8.jpg",
+                            IsActive = true,
+                            ReporterId = 1,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 340
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 4,
+                            CreateAt = new DateTime(2024, 5, 17, 16, 23, 31, 887, DateTimeKind.Local).AddTicks(2104),
+                            Description = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+                            ImageAddress = "/assets/img/blog/9.jpg",
+                            IsActive = true,
+                            ReporterId = 3,
+                            ShortDescription = "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد\r\n\r\n",
+                            Title = "نحوه انتخاب لباس کار برای زنان و مردان؟",
+                            VisitCount = 50
                         });
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Reporter", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Reporter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,8 +363,10 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.Property<string>("AboutMe")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageAddress")
@@ -274,19 +379,25 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 2,
+                            Id = 1,
                             FullName = "علی محمدی",
-                            ImageAddress = "~/assets/img/author/1.jpg"
+                            ImageAddress = "/assets/img/author/1.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FullName = "سحر رمضانی",
+                            ImageAddress = "/assets/img/author/2.jpg"
                         },
                         new
                         {
                             Id = 3,
-                            FullName = "سحر رمضانی",
-                            ImageAddress = "~/assets/img/author/2.jpg"
+                            FullName = "مریم اکبری",
+                            ImageAddress = "/assets/img/author/3.jpg"
                         });
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Tag", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -355,7 +466,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Visitor", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Visitor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -363,8 +474,13 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AboutMe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -527,45 +643,53 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                     b.ToTable("NewsTag");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.ApplicationUser", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.Reporter", "Reporter")
+                    b.HasOne("MaktabNews.Domain.Core.Entities.Reporter", "Reporter")
                         .WithMany()
-                        .HasForeignKey("ReporterId");
+                        .HasForeignKey("ReporterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("MaktabNew.Domain.Core.Entities.Visitor", "Visitor")
+                    b.HasOne("MaktabNews.Domain.Core.Entities.Visitor", "Visitor")
                         .WithMany()
-                        .HasForeignKey("VisitorId");
+                        .HasForeignKey("VisitorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Reporter");
 
                     b.Navigation("Visitor");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Comment", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Comment", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.News", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.News", "News")
                         .WithMany("Comments")
-                        .HasForeignKey("NewsId");
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("MaktabNew.Domain.Core.Entities.ApplicationUser", "User")
+                    b.HasOne("MaktabNews.Domain.Core.Entities.ApplicationUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("News");
+
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.News", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.News", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.Category", "Category")
+                    b.HasOne("MaktabNews.Domain.Core.Entities.Category", "Category")
                         .WithMany("NewsList")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MaktabNew.Domain.Core.Entities.Reporter", "Reporter")
+                    b.HasOne("MaktabNews.Domain.Core.Entities.Reporter", "Reporter")
                         .WithMany("NewsList")
                         .HasForeignKey("ReporterId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -587,7 +711,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.ApplicationUser", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -596,7 +720,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.ApplicationUser", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -611,7 +735,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MaktabNew.Domain.Core.Entities.ApplicationUser", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -620,7 +744,7 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.ApplicationUser", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -629,35 +753,35 @@ namespace MaktabNews.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("NewsTag", b =>
                 {
-                    b.HasOne("MaktabNew.Domain.Core.Entities.News", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.News", null)
                         .WithMany()
                         .HasForeignKey("NewsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MaktabNew.Domain.Core.Entities.Tag", null)
+                    b.HasOne("MaktabNews.Domain.Core.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Category", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Category", b =>
                 {
                     b.Navigation("NewsList");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.News", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.News", b =>
                 {
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("MaktabNew.Domain.Core.Entities.Reporter", b =>
+            modelBuilder.Entity("MaktabNews.Domain.Core.Entities.Reporter", b =>
                 {
                     b.Navigation("NewsList");
                 });

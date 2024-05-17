@@ -1,5 +1,4 @@
-﻿using MaktabNew.Domain.Core.Entities;
-using MaktabNews.Domain.Core.Dtos.News;
+﻿using MaktabNews.Domain.Core.Dtos.News;
 
 namespace MaktabNews.Domain.Core.Contracts.Repository
 {

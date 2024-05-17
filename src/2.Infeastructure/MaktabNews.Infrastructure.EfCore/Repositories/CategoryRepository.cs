@@ -1,8 +1,8 @@
-﻿using MaktabNew.Domain.Core.Entities;
-using MaktabNews.Redis;
+﻿using MaktabNews.Redis;
 using MaktabNews.Domain.Core.Dtos.Category;
 using MaktabNews.Infrastructure.EfCore.Common;
 using MaktabNews.Domain.Core.Contracts.Repository;
+using MaktabNews.Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Infrastructure.EfCore.Repositories

@@ -1,4 +1,4 @@
-﻿using MaktabNew.Domain.Core.Entities;
+﻿using MaktabNews.Domain.Core.Entities;
 using MaktabNews.Infrastructure.EfCore.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

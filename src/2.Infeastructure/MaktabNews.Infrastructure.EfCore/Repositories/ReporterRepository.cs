@@ -23,7 +23,8 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
                     Id = x.Id,
                     FullName = x.FullName,
                     AboutMe = x.AboutMe,
-                    ImageAddress = x.ImageAddress
+                    ImageAddress = x.ImageAddress,
+                    Address = x.Address
                 }).FirstOrDefaultAsync(x=>x.Id == id, cancellationToken);
 
             return result ?? new ReporterSummeryDto();

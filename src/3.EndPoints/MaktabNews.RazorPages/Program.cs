@@ -12,9 +12,10 @@ using MaktabNews.Domain.Core.Contracts.Services;
 using MaktabNews.Domain.Core.Contracts.Repository;
 using MaktabNews.Domain.Core.Contracts.AppServices;
 using MaktabNews.Domain.Core.Contracts.AppServifces;
+using MaktabNews.Domain.Core.Entities;
 using MaktabNews.Infrastructure.EfCore.Repositories;
-using MaktabNew.Domain.Core.Entities;
 using Microsoft.AspNetCore.Identity;
+using Framework;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,9 @@ builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<ICategoryAppServices, CategoryAppServices>();
 
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ICommentServices, CommentServices>();
+builder.Services.AddScoped<ICommentAppServices, CommentAppServices>();
+
 
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<ITagServices, TagServices>();
@@ -43,6 +47,7 @@ builder.Services.AddScoped<IReporterAppServices, ReporterAppServices>();
 builder.Services.AddScoped<IRedisCacheServices, RedisCacheServices>();
 
 builder.Services.AddScoped<IAccountAppServices, AccountAppServices>();
+
 
 
 
@@ -112,7 +117,8 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole<int>>
         options.Password.RequireLowercase = false;
     })
     .AddRoles<IdentityRole<int>>()
-    .AddEntityFrameworkStores<AppDbContext>();
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddErrorDescriber<PersianIdentityErrorDescriber>();
 
 #endregion
 

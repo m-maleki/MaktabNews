@@ -1,5 +1,5 @@
-﻿using MaktabNew.Domain.Core.Entities;
-using MaktabNew.Domain.Core.Enum;
+﻿using MaktabNew.Domain.Core.Enum;
+using MaktabNews.Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,15 +13,21 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
             {
                 new Reporter()
                 {
-                    Id = 2,
+                    Id = 1,
                     FullName = "علی محمدی",
-                    ImageAddress = "~/assets/img/author/1.jpg"
+                    ImageAddress = "/assets/img/author/1.jpg"
+                },
+                new Reporter()
+                {
+                    Id = 2,
+                    FullName = "سحر رمضانی",
+                    ImageAddress = "/assets/img/author/2.jpg"
                 },
                 new Reporter()
                 {
                     Id = 3,
-                    FullName = "سحر رمضانی",
-                    ImageAddress = "~/assets/img/author/2.jpg"
+                    FullName = "مریم اکبری",
+                    ImageAddress = "/assets/img/author/3.jpg"
                 },
 
             });

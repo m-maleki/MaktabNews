@@ -1,4 +1,4 @@
-﻿using MaktabNew.Domain.Core.Entities;
+﻿using MaktabNews.Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MaktabNew.Domain.Core.Entities;
-using MaktabNews.Domain.Core.Dtos.Comment;
+﻿using MaktabNews.Domain.Core.Dtos.Comment;
 
 namespace MaktabNews.Domain.Core.Dtos.News
 {
@@ -20,7 +14,7 @@ namespace MaktabNews.Domain.Core.Dtos.News
         public string CreateAtFa { get; set; }
         public string NewsImageAddress { get; set; }
         public string ReporterImageAddress { get; set; }
-        public List<MaktabNew.Domain.Core.Entities.Tag> Tags { get; set; } = new List<MaktabNew.Domain.Core.Entities.Tag>();
+        public List<Entities.Tag> Tags { get; set; } = new List<Entities.Tag>();
         public List<CommentViewDto> Comments { get; set; } = new List<CommentViewDto>();
         public int ReporterId { get; set; }
     }

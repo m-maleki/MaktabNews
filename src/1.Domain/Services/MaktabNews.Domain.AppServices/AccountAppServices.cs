@@ -1,5 +1,5 @@
-﻿using MaktabNew.Domain.Core.Entities;
-using MaktabNews.Domain.Core.Contracts.AppServices;
+﻿using MaktabNews.Domain.Core.Contracts.AppServices;
+using MaktabNews.Domain.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace MaktabNews.Domain.AppServices;

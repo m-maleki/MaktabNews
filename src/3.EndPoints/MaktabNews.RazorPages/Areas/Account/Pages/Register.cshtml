@@ -1,0 +1,57 @@
+﻿@page
+@model MaktabNews.RazorPages.Areas.Identity.Pages.RegisterModel
+
+
+<div class="sign widget ">
+    <div class="section-title">
+        <h5>ثبت نام</h5>
+    </div>
+    <form class="sign-form widget-form " method="post">
+        
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        
+        <hr/>
+        <div class="form-group">
+
+            <input type="email" asp-for="Input.Email" class="form-control" placeholder="آدرس ایمیل *">
+
+            </div>
+        <div class="form-group">
+
+            <input type="password" asp-for="Input.Password" class="form-control" placeholder="رمز عبور *">
+        </div>
+
+
+        <div class="sign-controls form-group">
+            <div class="custom-control custom-checkbox">
+                <input id="IsReporter" asp-for="Input.IsReporter" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="IsReporter"> خبرنگار </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="IsVisitor" asp-for="Input.IsVisitor" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="IsVisitor"> بیننده خبر </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn-custom">ثبت نام</button>
+        </div>
+
+        <p class="form-group text-center">حساب کاربری دارید؟ <a asp-page="./Login" class="btn-link">وارد شوید</a> </p>
+
+
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.sign-controls input[type="checkbox"]').click(function() {
+                var currentCheckbox = $(this);
+                $('.sign-controls input[type="checkbox"]').not(currentCheckbox).prop('checked', false);
+            });
+        });
+    </script>
+}
+

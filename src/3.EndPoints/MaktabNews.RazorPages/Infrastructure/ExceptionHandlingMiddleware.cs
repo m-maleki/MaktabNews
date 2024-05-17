@@ -20,8 +20,7 @@ public class ExceptionHandlingMiddleware
         {
             await _next(context);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             _logger.LogError(e.Message);
             context.Response.Redirect("/error");
         }
