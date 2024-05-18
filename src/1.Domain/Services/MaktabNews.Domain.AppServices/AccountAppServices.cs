@@ -29,7 +29,6 @@ public class AccountAppServices : IAccountAppServices
             role = "Reporter";
             user.Reporter = new Reporter()
             {
-
             };
         }
 

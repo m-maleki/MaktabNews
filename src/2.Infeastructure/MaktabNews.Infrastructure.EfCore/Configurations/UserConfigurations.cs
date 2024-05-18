@@ -56,7 +56,7 @@ public class UserConfigurations
                 NormalizedEmail = "MARYAM@GMAIL.COM",
                 LockoutEnabled = false,
                 PhoneNumber = "09377507920",
-                ReporterId = 4,
+                VisitorId = 4,
                 SecurityStamp = Guid.NewGuid().ToString()
             }
         };
@@ -69,19 +69,19 @@ public class UserConfigurations
             builder.Entity<ApplicationUser>().HasData(user);
         }
 
-        //Seed Role To Users
+        // Seed Roles
         builder.Entity<IdentityRole<int>>().HasData(
             new IdentityRole<int>() { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
             new IdentityRole<int>() { Id = 2, Name = "Visitor", NormalizedName = "VISITOR" },
             new IdentityRole<int>() { Id = 3, Name = "Reporter", NormalizedName = "REPORTER" }
         );
 
-        // Seed Roles
+        //Seed Role To Users
         builder.Entity<IdentityUserRole<int>>().HasData(
             new IdentityUserRole<int>() { RoleId = 1, UserId = 1 },
             new IdentityUserRole<int>() { RoleId = 3, UserId = 2 },
             new IdentityUserRole<int>() { RoleId = 3, UserId = 3 },
-            new IdentityUserRole<int>() { RoleId = 3, UserId = 4 }
+            new IdentityUserRole<int>() { RoleId = 2, UserId = 4 }
         );
     }
 }

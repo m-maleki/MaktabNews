@@ -8,8 +8,4 @@ public class ApplicationUser : IdentityUser<int>
     public int? ReporterId { get; set; }
     public Visitor? Visitor { get; set; }
     public int? VisitorId { get; set; }
-    public string? ImageAddress { get; set; }
-    public UserRole UserRole { get; set; }
-    public List<Comment> Comments { get; set; }
-    public string? FullName { get; set; }
 }

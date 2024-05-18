@@ -10,11 +10,6 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasMany(x => x.Comments)
-                .WithOne(x => x.News)
-                .HasForeignKey(x => x.Id)
-                .OnDelete(DeleteBehavior.NoAction);
-
             builder.HasData(new List<News>()
             {
                 new News()
@@ -40,7 +35,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 841,
-                    ReporterId = 4,
+                    ReporterId = 2,
                     ImageAddress = "/assets/img/blog/2.jpg",
                 },
                 new News()
@@ -53,7 +48,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 625,
-                    ReporterId = 4,
+                    ReporterId = 2,
                     ImageAddress = "/assets/img/blog/3.jpg",
                 },
                 new News()
@@ -118,7 +113,7 @@ namespace MaktabNews.Infrastructure.EfCore.Configurations
                     CreateAt = DateTime.Now,
                     IsActive = true,
                     VisitCount = 340,
-                    ReporterId = 4,
+                    ReporterId = 2,
                     ImageAddress = "/assets/img/blog/8.jpg",
                 },
                 new News()

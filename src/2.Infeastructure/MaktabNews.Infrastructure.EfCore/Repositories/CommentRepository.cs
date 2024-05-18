@@ -24,7 +24,7 @@ namespace MaktabNews.Infrastructure.EfCore.Repositories
             var entity = new Comment()
             {
                 Description = model.Description,
-                UserId = model.UserId,
+                VisitorId = model.UserId,
                 IsActive = false,
                 CreateAt = DateTime.Now,
                 NewsId = model.NewsId,
