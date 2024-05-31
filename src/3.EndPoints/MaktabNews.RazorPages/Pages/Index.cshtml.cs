@@ -1,5 +1,6 @@
 ﻿using MaktabNews.Domain.Core.Contracts.AppServifces;
 using MaktabNews.Domain.Core.Dtos.News;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -21,6 +22,8 @@ namespace MaktabNews.Pages
 
         public async Task OnGet(CancellationToken cancellationToken)
         {
+            var u = User;
+
             _logger.LogInformation("This is test log");
             News = await _newsAppServices.GetAll(cancellationToken);
         }

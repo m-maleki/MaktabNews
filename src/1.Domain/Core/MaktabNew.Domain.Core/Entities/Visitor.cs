@@ -2,5 +2,5 @@
 
 public class Visitor : User
 {
-
+   public List<Comment> Comments { get; set; }
 }

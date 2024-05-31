@@ -8,6 +8,12 @@ public class CommentConfigurations : IEntityTypeConfiguration<Comment>
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
         builder.HasKey(x => x.Id);
+
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+        builder.HasOne(x => x.User)
+            .WithMany(x => x.Comments)
+            .HasForeignKey(x=>x.VisitorId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

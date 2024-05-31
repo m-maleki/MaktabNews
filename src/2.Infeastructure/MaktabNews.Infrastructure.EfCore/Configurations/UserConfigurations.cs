@@ -9,7 +9,7 @@ public class UserConfigurations
     {
         var hasher = new PasswordHasher<ApplicationUser>();
 
-        // SeedUsers
+         //SeedUsers
         var users = new List<ApplicationUser>
         {
             new ApplicationUser()
@@ -32,7 +32,6 @@ public class UserConfigurations
                 NormalizedEmail = "ALI@GMAIL.COM",
                 LockoutEnabled = false,
                 PhoneNumber = "09377507920",
-                ReporterId = 2,
                 SecurityStamp = Guid.NewGuid().ToString()
             },
             new ApplicationUser()
@@ -44,7 +43,6 @@ public class UserConfigurations
                 NormalizedEmail = "SAHAR@GMAIL.COM",
                 LockoutEnabled = false,
                 PhoneNumber = "09377507920",
-                ReporterId = 3,
                 SecurityStamp = Guid.NewGuid().ToString()
             },
             new ApplicationUser()
@@ -56,7 +54,6 @@ public class UserConfigurations
                 NormalizedEmail = "MARYAM@GMAIL.COM",
                 LockoutEnabled = false,
                 PhoneNumber = "09377507920",
-                VisitorId = 4,
                 SecurityStamp = Guid.NewGuid().ToString()
             }
         };

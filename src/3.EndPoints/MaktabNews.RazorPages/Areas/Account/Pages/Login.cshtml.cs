@@ -18,7 +18,6 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
         [BindProperty]
         public InputModel Input { get; set; }
 
-
         public class InputModel
         {
             [Required]
@@ -33,6 +32,7 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
 
         public void OnGet()
         {
+            
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

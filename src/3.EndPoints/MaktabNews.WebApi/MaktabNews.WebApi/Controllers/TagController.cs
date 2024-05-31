@@ -15,11 +15,19 @@ namespace MaktabNews.WebApi.Controllers
             _tagAppServices = tagAppServices;
         }
 
+
         [HttpGet]
         [Route(nameof(GetAll))]
         public async Task<List<TagViewDto>> GetAll(CancellationToken cancellationToken)
         {
             return await _tagAppServices.GetAll(cancellationToken);
+        }
+
+        [HttpPost]
+        [Route(nameof(CreateTag))]
+        public async Task CreateTag(TagViewDto model)
+        {
+            // Create Tag
         }
     }
 }

@@ -5,28 +5,34 @@
 
 <div class="sign widget ">
     <div class="container px-5 my-5">
-        <form id="contactForm">
-            <div style="text-align: center">
-                <img style="border-radius: 40%;width:350px" src="@Model.ReporterSummery.ImageAddress"  id="تصویر" />
-            </div>
-            <hr/>
-            <div class="form-floating mb-3">
-                <input asp-for="ReporterSummery.FullName" class="form-control" id="نامخانوادگی" type="text" placeholder="نام خانوادگی" />
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="ReporterSummery.ImageAddress" class="form-control" id="تصویر" type="text" placeholder="تصویر" />
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="ReporterSummery.Address" class="form-control" id="آدرس" type="text" placeholder="آدرس" />
-            </div>
-            <div class="form-floating mb-3">
-                <textarea asp-for="ReporterSummery.AboutMe" class="form-control" id="دربارهمن" type="text" placeholder="درباره من" style="height: 10rem;"></textarea>
-            </div>
+        <form id="contactForm" enctype="multipart/form-data" method="post">
 
+            <input enctype="multipart/form-data" type="hidden" asp-for="InputModel.Id" />
+            <div style="text-align: center">
+
+                @if (@Model.InputModel.ImageAddress != null)
+                {
+                    <img style="border-radius: 40%; width: 350px" src="@Model.InputModel.ImageAddress" />
+                }
+            </div>
+            <hr />
+            <div class="form-floating mb-3">
+                <input asp-for="InputModel.FullName" class="form-control" id="نامخانوادگی" type="text" placeholder="نام خانوادگی" />
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="InputModel.Address" class="form-control" id="آدرس" type="text" placeholder="آدرس" />
+            </div>
+            <div class="form-floating mb-3">
+                <textarea asp-for="InputModel.AboutMe" class="form-control" id="دربارهمن" type="text" placeholder="درباره من" style="height: 10rem;"></textarea>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="InputModel.ProfileImgFile" class="form-control" id="تصویر" type="file" placeholder="تصویر" />
+            </div>
             <div class="d-grid">
-                <button class="btn btn-primary " id="submitButton" type="submit">ویرایش</button>
+                <button class="btn btn-primary"  type="submit">ویرایش</button>
             </div>
         </form>
     </div>
 </div>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+

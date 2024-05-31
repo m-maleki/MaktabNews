@@ -1,6 +1,8 @@
-﻿using MaktabNews.Domain.Core.Contracts.AppServices;
+﻿using System.Security.Claims;
+using MaktabNews.Domain.Core.Contracts.AppServices;
 using MaktabNews.Domain.Core.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaktabNews.Domain.AppServices;
 public class AccountAppServices : IAccountAppServices
@@ -15,14 +17,16 @@ public class AccountAppServices : IAccountAppServices
         _userManager = userManager;
     }
 
-    public async Task<List<IdentityError>> Register(string email, string password, bool isReporter, bool isVisitor)
+    public async Task<List<IdentityError>> Register(string email, string password, bool isReporter, bool isVisitor, string phoneNumber)
     {
-        var role = string.Empty;
 
+
+        var role = string.Empty;
         var user = CreateUser();
 
         user.UserName = email;
         user.Email = email;
+        user.PhoneNumber = phoneNumber;
 
         if (isReporter)
         {
@@ -43,6 +47,20 @@ public class AccountAppServices : IAccountAppServices
 
         var result = await _userManager.CreateAsync(user, password);
 
+        if (isReporter)
+        {
+            var userReporterId = user.Reporter!.Id;
+            await _userManager.AddClaimAsync(user, new Claim("userReporterId", userReporterId.ToString()));
+        }
+
+
+        if (isVisitor)
+        {
+            var userVisitorId = user.Visitor!.Id;
+            await _userManager.AddClaimAsync(user, new Claim("userVisitorId", userVisitorId.ToString()));
+        }
+
+
         if (result.Succeeded)
             await _userManager.AddToRoleAsync(user, role);
 
@@ -51,6 +69,13 @@ public class AccountAppServices : IAccountAppServices
 
     public async Task<bool> Login(string email, string password)
     {
+
+        var user = await _userManager.Users
+            .Include(u => u.Reporter)
+            .Include(x=>x.Visitor)
+            .FirstOrDefaultAsync(u => u.Email == email);
+
+
         var result = await _signInManager.PasswordSignInAsync(email, password, true, lockoutOnFailure: false);
 
         return result.Succeeded;

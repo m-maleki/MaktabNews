@@ -25,6 +25,7 @@ namespace MaktabNews.RazorPages.Areas.Identity.Pages
             public string Password { get; set; }
             public bool IsReporter { get; set; }
             public bool IsVisitor { get; set; }
+            public string PhoneNumber { get; set; }
         }
 
 
@@ -43,7 +44,7 @@ namespace MaktabNews.RazorPages.Areas.Identity.Pages
             returnUrl ??= Url.Content("~/");
 
             var result = await _accountAppServices.Register(Input.Email, Input.Password,
-                Input.IsReporter, Input.IsVisitor);
+                Input.IsReporter, Input.IsVisitor,Input.PhoneNumber);
 
             if (result.Count == 0)
             {

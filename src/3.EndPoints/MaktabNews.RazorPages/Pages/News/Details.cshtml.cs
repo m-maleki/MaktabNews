@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MaktabNews.RazorPages.Pages.News
 {
-
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly INewsAppServices _newsAppServices;

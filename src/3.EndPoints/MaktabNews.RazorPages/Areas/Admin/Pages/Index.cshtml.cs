@@ -8,5 +8,10 @@ namespace MaktabNews.RazorPages.Areas.Admin.Pages
         public void OnGet()
         {
         }
+
+        public void OnGetConfirm(int id)
+        {
+
+        }
     }
 }
