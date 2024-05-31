@@ -1,5 +1,9 @@
 ﻿@page
+@using MaktabNews.Domain.Core.Contracts.AppServifces
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model MaktabNews.RazorPages.Areas.Account.Pages.ProfileModel
+@inject ICategoryAppServices CategoryAppServices
+
 @{
 }
 
@@ -8,11 +12,15 @@
         <form id="contactForm" enctype="multipart/form-data" method="post">
 
             <input enctype="multipart/form-data" type="hidden" asp-for="InputModel.Id" />
+            <input type="hidden" asp-for="InputModel.ImageAddress"></input>
+            
+            <input type="hidden" value="@ViewData["ImageAddress"]" />
+
             <div style="text-align: center">
 
                 @if (@Model.InputModel.ImageAddress != null)
                 {
-                    <img style="border-radius: 40%; width: 350px" src="@Model.InputModel.ImageAddress" />
+                    <img style="border-radius: 50%; width: 200px" src="@Model.InputModel.ImageAddress" />
                 }
             </div>
             <hr />
@@ -25,14 +33,41 @@
             <div class="form-floating mb-3">
                 <textarea asp-for="InputModel.AboutMe" class="form-control" id="دربارهمن" type="text" placeholder="درباره من" style="height: 10rem;"></textarea>
             </div>
+
+            <div class="form-floating mb-3">
+                <select asp-for="InputModel.CategoryIds" class="js-example-basic-multiple form-control" multiple="multiple">
+                @foreach (var category in  await @CategoryAppServices.GetCategoriesWithCount(default))
+                {
+                    <option value="@category.Id">@category.Title</option>
+                }
+
+                </select>
+            </div>
+
             <div class="form-floating mb-3">
                 <input asp-for="InputModel.ProfileImgFile" class="form-control" id="تصویر" type="file" placeholder="تصویر" />
             </div>
             <div class="d-grid">
-                <button class="btn btn-primary"  type="submit">ویرایش</button>
+                <button class="btn btn-primary" type="submit">ویرایش</button>
             </div>
         </form>
     </div>
 </div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
+@section Scripts
+{
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            
+            $('.js-example-basic-multiple').select2(
+            {
+                placeholder: "Select a state",
+                allowClear: true
+            });
+        });
+    </script>
+}

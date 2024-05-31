@@ -21,9 +21,12 @@ namespace MaktabNews.Domain.AppServices
 
         public async Task Update(UpdateReporterDto model,IFormFile file, CancellationToken cancellationToken)
         {
-            var ImageAddress = await _reporterServices.UploadImageProfile(file, cancellationToken);
+            if (file is not null)
+            {
+                var ImageAddress = await _reporterServices.UploadImageProfile(file, cancellationToken);
 
-            model.ImageAddress = ImageAddress;
+                model.ImageAddress = ImageAddress;
+            }
 
             await _reporterServices.Update(model, cancellationToken);
         }

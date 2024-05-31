@@ -6,4 +6,5 @@ namespace MaktabNews.Domain.Core.Entities;
 public class Reporter : User
 {
     public List<News> NewsList { get; set; }
+    public List<Category>? Categories { get; set; }
 }

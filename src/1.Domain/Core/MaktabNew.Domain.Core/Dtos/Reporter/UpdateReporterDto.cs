@@ -6,4 +6,5 @@ public class UpdateReporterDto
     public string Address { get; set; }
     public string AboutMe { get; set; }
     public string? ImageAddress { get; set; }
+    public List<int>? Categories { get; set; }
 }

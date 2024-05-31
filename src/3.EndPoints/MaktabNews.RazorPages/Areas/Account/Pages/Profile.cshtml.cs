@@ -34,6 +34,7 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
             public string FullName { get; set; }
             public string? Address { get; set; }
             public IFormFile? ProfileImgFile { get; set; }
+            public List<int>? CategoryIds { get; set; }
 
         }
 
@@ -47,6 +48,8 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
                     FullName = InputModel.FullName,
                     AboutMe = InputModel.AboutMe,
                     Address = InputModel.Address,
+                    Categories = InputModel.CategoryIds,
+                    ImageAddress = InputModel.ImageAddress
                 },InputModel.ProfileImgFile, cancellationToken);
             }
 
@@ -67,6 +70,8 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
             {
                 var ReporterSummery = await _reporterAppServices.GetSummery(userId, cancellationToken);
 
+                ViewData["ImageAddress"] = ReporterSummery.ImageAddress;
+
                     InputModel = new ViewModel()
                     {
                         Id = ReporterSummery.Id,
@@ -74,6 +79,7 @@ namespace MaktabNews.RazorPages.Areas.Account.Pages
                         Address = ReporterSummery.Address,
                         AboutMe = ReporterSummery.AboutMe,
                         ImageAddress = ReporterSummery.ImageAddress,
+                        CategoryIds = ReporterSummery.CategoryIds
                     };
                
             }
